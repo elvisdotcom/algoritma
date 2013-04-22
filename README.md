@@ -1,6 +1,6 @@
-# Algoritma Pembelajaran Mesin
+# Kumpulan Algoritma
 
-Koleksi algoritma pembelajaran mesin dari Ardwort. Boleh digunakan, namun risiko ditanggung sendiri.
+Koleksi algoritma, kebanyakan adalah algoritma pembelajaran mesin. Boleh digunakan, namun risiko ditanggung sendiri.
 
 Lihat halaman wiki untuk dokumentasi setiap algoritma.
 
