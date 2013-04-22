@@ -1,19 +1,44 @@
-import math
+from math import sqrt
 
-def confidence_wilson_interval(pos, neg):
-    """\
-    Confidence sort algoritm using Wilson score interval
-    """
+# Wilson score confidence interval algoritm
+
+def confidence1(pos, neg):
     pos, neg = float(pos), float(neg)
-    if pos + neg == 0.0:
-        return 0
     n = pos + neg
-    z = 1.0
-    hat_p = pos / n
-    return math.sqrt(
-                     hat_p + z * z / (2 * n) - \
-                     z * ((hat_p * (1 - hat_p) + z * z / (4 * n)) / n)
-                     ) / \
-           (1 + z * z/n)
+    if n == 0.0:
+        return 0.0
+    z = 1.281551565545 # 80% confidence
+    phat = pos / n
+    left = phat + 1 / (2 * n) * z * z
+    right = z * sqrt(phat * (1 - phat) / n + z * z / (4 * n * n))
+    under = 1 + 1 / n * z * z
+    return (left - right) / under
 
-confidence = confidence_wilson_interval
+
+def confidence2(pos, neg):
+    pos, neg = float(pos), float(neg)
+    n = pos + neg
+    if n == 0.0:
+        return 0.0
+    z = 1.0 # 1.0 = 85%, 1.6 = 95%
+    phat = pos / n
+    left = phat + z * z / (2 * n)
+    right = z * ((phat * (1 - phat) + z * z / (4 * n)) / n)
+    under = (1 + z * z/n)
+    return sqrt(left - right) / under
+
+
+def confidence3(pos, neg):
+    pos, neg = float(pos), float(neg)
+    n = pos + neg
+    if pos == 0.0:
+        return -neg
+    z = 1.64485 # 1.0 = 85%, 1.6 = 95%
+    phat = pos / n
+    left = phat + z * z / (2 * n)
+    right = z * ((phat * (1 - phat) + z * z / (4 * n)) / n)
+    under = (1 + z * z/n)
+    return sqrt(left - right) / under
+
+
+confidence = confidence3
