@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from math import sqrt
 
 # Wilson score confidence interval algoritm
@@ -24,7 +27,7 @@ def confidence2(pos, neg):
     phat = pos / n
     left = phat + z * z / (2 * n)
     right = z * ((phat * (1 - phat) + z * z / (4 * n)) / n)
-    under = (1 + z * z/n)
+    under = 1 + z * z / n
     return sqrt(left - right) / under
 
 
@@ -36,9 +39,9 @@ def confidence3(pos, neg):
     z = 1.64485 # 1.0 = 85%, 1.6 = 95%
     phat = pos / n
     left = phat + z * z / (2 * n)
-    right = z * ((phat * (1 - phat) + z * z / (4 * n)) / n)
-    under = (1 + z * z/n)
-    return sqrt(left - right) / under
+    right = z * sqrt((phat * (1 - phat) + z * z / (4 * n)) / n)
+    under = 1 + z * z / n
+    return (left - right) / under
 
 
 confidence = confidence3
