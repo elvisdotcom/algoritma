@@ -1,6 +1,4 @@
-
-# Menghitung nilai keyakinan berdasarkan penilaian positif dan negatif dari pemilih
-
+# Menghitung nilai keyakinan berdasarkan penilaian positif dan negatif
 
 Algoritma ini memperlakukan input sebagai statistik contoh. Algoritma ini juga memberikan penilaian sementara (provisional ranking) sebesar 85%. Semakin banyak input, semakin besar nilai keyakinan dengan nilai yang sebenarnya. 
 
