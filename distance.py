@@ -4,7 +4,7 @@
 from __future__ import division
 
 
-def jaccard1(a, b):
+def jaccard(a, b):
     a, b = set(a), set(b)
     top = a.intersection(b)
     under = a.union(b)
