@@ -6,8 +6,8 @@ from __future__ import division
 
 def jaccard(a, b):
     a, b = set(a), set(b)
-    top = a.intersection(b)
-    under = a.union(b)
+    top = len(a.intersection(b))
+    under = len(a.union(b))
     return top / under
 
 
